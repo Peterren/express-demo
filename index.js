@@ -1,3 +1,5 @@
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
 const config = require('config');
 const Joi = require('joi');
 const logger = require('./logger');
@@ -17,7 +19,7 @@ app.use(express.static('public'));
 app.use(helmet());
 if (app.get('env')==='development') {
     app.use(morgan('tiny'));
-    console.log('Morgan enalbed');
+    startupDebugger('Morgan enalbed');
 }
 app.use(logger);
 
